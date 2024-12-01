@@ -32,7 +32,7 @@ if __name__ == '__main__':
     try:
         with Session() as session:
             if not session.query(Fornecedor).first():
-                print("Inserindo fornecedores...")
+                print("\n\033[32mInserindo fornecedores...\033[m\n")
                 fornecedores = [
                     Fornecedor(nome="Fornecedor A", telefone="12345678", email="contato@a.com", endereco="Endereço A"),
                     Fornecedor(nome="Fornecedor B", telefone="87654321", email="contato@b.com", endereco="Endereço B"),
@@ -43,14 +43,14 @@ if __name__ == '__main__':
                 session.add_all(fornecedores)
                 session.commit()
             else:
-                print("Fornecedores já existentes.")
+                print("\n\033[33mFornecedores já existentes.\033[m\n")
     except SQLAlchemyError as e:
-        print(f"Erro ao inserir fornecedores: {e}")
+        print(f"\nErro ao inserir fornecedores: {e}\n")
 
     try:
         with Session() as session:
             if not session.query(Produto).first():
-                print("Inserindo produtos...")
+                print("\n\033[32mInserindo produtos...\033[m\n")
                 produtos = [
                     Produto(nome="Produto 1", descricao="Descrição do Produto 1", preco=100, fornecedor_id=1),
                     Produto(nome="Produto 2", descricao="Descrição do Produto 2", preco=200, fornecedor_id=2),
@@ -61,7 +61,7 @@ if __name__ == '__main__':
                 session.add_all(produtos)
                 session.commit()
             else:
-                print("Produtos já existentes.")
+                print("\n\033[33mProdutos já existentes.\033[m\n")
     except SQLAlchemyError as e:
-        print(f"Erro ao inserir produtos: {e}")
+        print(f"\nErro ao inserir produtos: {e}\n")
     
